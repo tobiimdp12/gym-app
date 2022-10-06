@@ -1,8 +1,7 @@
 
 # Challenge Javascript
 
-You can use this app to search exercises to do it at the gym or wherever 🙂 .Also you can see some examples videos about the selected exercises and you can added it to you favorite list or your Rutines List.
-
+You can use this app to search exercises to do it at the gym or wherever 🙂 .Also you can find some videotutorials about the selected exercises and you can added it to you favorite list or your Rutines List.
 
 ## Skill Facilitator
 
