@@ -1,0 +1,127 @@
+.container {
+  transition: all 1s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #256d85;
+  color: white;
+  width: 250px;
+  height: 100vh;
+  min-height: 100%;
+  z-index: 1000;
+
+  .menu {
+    font-size: 35px;
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    top: 0;
+    color: white;
+
+    @media screen and (max-width: 900px) {
+      background-color: black;
+      padding: 12px;
+      transform: translateX(60px);
+    }
+  }
+
+  .profile {
+    font-size: 13px;
+    text-align: center;
+
+    svg
+    {
+      object-fit: contain;
+      margin-top: 20px;
+      height: 80px;
+      width: 100%;
+    }
+    img {
+      margin-top: 24px;
+      object-fit: contain;
+      height: 120px;
+      width: 100%;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+  }
+
+  hr {
+    margin: 10px 40px;
+  }
+
+  .link {
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+    margin-left: 5px;
+    margin-top: 22px;
+    list-style: none;
+    text-decoration: none;
+    font-size: 25px;
+
+    &:hover {
+      cursor: pointer;
+    }
+    @media screen and (max-width: 900px) {
+      margin-top: 42px;
+    }
+
+    .name {
+      transition: all 1s ease-in-out;
+      display: block;
+      color: #fff;
+      margin-left: 10px;
+    }
+  }
+  .logout {
+    padding: 35px;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    font-size: 25px;
+    margin-top: 70px;
+    background-color: #1f7cb6;
+    color: rgb(255, 255, 255);
+    border: none;
+    transition: all 0.5s ease-in-out;
+    &:hover {
+      opacity: 0.6;
+      transform: scale(0.96,0.90);
+      cursor: pointer;
+    }
+  }
+}
+
+.active {
+  background-color: #06283d;
+}
+
+/***********close**************/
+.close {
+  .container {
+    width: 100px;
+    @media screen and (max-width: 900px) {
+      transform: translateX(-100px);
+    }
+    .menu {
+      color: white;
+    }
+
+    .link {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin-left: 0;
+
+      .name {
+        display: none;
+      }
+    }
+  }
+}
