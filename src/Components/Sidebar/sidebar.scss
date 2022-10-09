@@ -76,26 +76,7 @@
       margin-left: 10px;
     }
   }
-  .logout {
-    padding: 35px;
-    width: 100%;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    bottom: 0;
-    font-size: 25px;
-    margin-top: 70px;
-    background-color: #1f7cb6;
-    color: rgb(255, 255, 255);
-    border: none;
-    transition: all 0.5s ease-in-out;
-    &:hover {
-      opacity: 0.6;
-      transform: scale(0.96,0.90);
-      cursor: pointer;
-    }
-  }
+
 }
 
 .active {

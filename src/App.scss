@@ -3,6 +3,9 @@
   margin: 0;
   padding: 0;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   height: 100%;
@@ -10,7 +13,6 @@ body {
   font-family: "Rubik", sans-serif;
   background-color: #06283d;
   overflow-x: hidden;
-  scroll-behavior: smooth;
   margin-left: 100px;
 
   @media screen and (max-width: 900px) {
@@ -35,40 +37,47 @@ body {
 
 .pagination-container {
   margin-top: 560px;
-}
-.pagination-header {
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
 
-  h1 {
-    @media screen and (max-width: 700px) {
-      font-size: 25px;
-    }
-  }
-  .buttons {
+  .pagination-header {
     color: white;
-    background-color: #47b5ff;
-    font-size: 20px;
-    padding: 25px;
-    border: none;
-    transition: all 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 
-    @media screen and (max-width: 700px) {
-      font-size: 15px;
-      padding: 20px;
+    h1 {
+      @media screen and (max-width: 700px) {
+        font-size: 25px;
+      }
     }
+    .buttons {
+      color: white;
+      background-color: #47b5ff;
+      font-size: 20px;
+      padding: 25px;
+      border: none;
+      transition: all 0.5s ease-in-out;
 
-    &:hover {
-      cursor: pointer;
-    }
-    &:active {
-      transform: scale(0.8, 0.8);
+      @media screen and (max-width: 700px) {
+        font-size: 15px;
+        padding: 20px;
+      }
+
+      @media screen and (max-width: 400px) {
+        font-size: 15px;
+        padding: 15px;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+      &:active {
+        transform: scale(0.8, 0.8);
+      }
     }
   }
 }
+
 /**************************************************/
 /****************details*****************************/
 
@@ -89,6 +98,10 @@ body {
   }
   svg {
     font-size: 30px;
+  }
+
+  @media screen and (max-width: 900px) {
+    margin-bottom: 60px;
   }
 }
 .more-details-card {
@@ -118,7 +131,7 @@ body {
     margin-left: 10px;
     display: flex;
     flex-direction: column;
-    height: 742px;
+    height: 500px;
     color: white;
     h3 {
       margin-top: 15px;
@@ -168,6 +181,10 @@ body {
     margin-bottom: 20px;
     color: white;
   }
+
+  @media screen and (max-width: 900px) {
+    margin: 10px;
+  }
 }
 
 .similar-container {
@@ -175,8 +192,7 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
-
+  margin: 10px;
   div {
     p {
       color: white;
@@ -212,6 +228,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    @media screen and (max-width: 900px) {
+      flex-direction: column;
+    }
     .input {
       background-repeat: repeat;
       background-color: #fff;
@@ -226,7 +245,8 @@ body {
       font-weight: 700;
 
       @media screen and (max-width: 900px) {
-        width: 150px;
+        width: 50%;
+        margin: 0;
       }
     }
 
@@ -246,6 +266,9 @@ body {
 
       svg {
         font-size: 48px;
+      }
+      @media screen and (max-width: 900px) {
+        margin-top: 20px;
       }
     }
 
@@ -269,6 +292,15 @@ body {
   color: white;
   background-color: #256d85;
   z-index: 2;
+  @media screen and (max-width: 1200px) {
+    .hero-banner-img {
+      display: none;
+    }
+
+    .hero-banner-subtext {
+      display: none;
+    }
+  }
 
   .hero-banner-icon {
     position: absolute;
@@ -354,7 +386,6 @@ body {
   height: 445px;
   background: #47b5ff;
   border: 4px solid #47b5ff;
-
   margin-top: 90px;
   margin: 100px;
   text-decoration: none;
@@ -366,6 +397,7 @@ body {
   transition: 0.3s all ease-in-out;
 
   img {
+    width: 100%;
     height: 326px;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
@@ -404,6 +436,47 @@ body {
     color: white;
     font-weight: bold;
     font-size: 20px;
+    max-width: 350px;
+  }
+
+  .heart {
+    stroke: red;
+    stroke-width: 30;
+    font-size: 2.5rem;
+    color: red;
+    opacity: 0.2;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+    background-color: #47b5ff;
+    padding: 15px;
+    transition: all 0.5s;
+  }
+
+  .heart:hover {
+    opacity: 1;
+  }
+  .active {
+    animation: like 0.5s 1;
+    opacity: 1;
+  }
+
+  @-webkit-keyframes like {
+    0% {
+      transform: scale(1);
+    }
+    90% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1.1);
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    margin: 90px 0;
+    width: 100%;
   }
 }
 
@@ -419,6 +492,10 @@ body {
   width: 387px;
   height: 381px;
   text-decoration: none;
+
+  @media screen and (max-width: 700px) {
+    margin-top: 60px;
+  }
 }
 
 /********************body part********************************/
@@ -674,32 +751,3 @@ body {
 }
 
 /****************************************************/
-@media screen and (max-width: 1200px) {
-  .detail-image {
-    width: 300px;
-    height: 300px;
-  }
-
-  .hero-banner-img {
-    display: none;
-  }
-
-  .hero-banner-subtext {
-    display: none;
-  }
-
-  .exercise-card {
-    width: 320px;
-  }
-
-  .exercise-video {
-    width: 320px;
-    height: 300px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .exercise-card {
-    width: 280px;
-  }
-}

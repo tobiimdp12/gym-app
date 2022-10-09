@@ -45,7 +45,7 @@ function SearchExercises({ setExercises, bodyPart, setBodyPart }) {
 
   console.log(bodyParts);
   return (
-    <div className="search-container">
+    <div className="search-container" id="search">
       <h2>
         <b>
           Awesome Exercises You <br /> Should Know

@@ -13,7 +13,7 @@ function Herobanner() {
         <h3>Go Gym Club</h3>
         <h2>Sweat, Smile And Repeat</h2>
         <p>Check out the most effective exercises personalized to you</p>
-        <a href="#" className="hero-banner-btn">
+        <a href="#search" className="hero-banner-btn">
           Explore Exercises
         </a>
 

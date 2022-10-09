@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FcHome,
   FcLike,
@@ -15,7 +15,6 @@ import { startLogout } from "../../store/auth/thunks";
 import defaultuser from "../../assets/defaultuser.png";
 import "./sidebar.scss";
 
-//TODO fijarme lo del boton de logout
 function Sidebar() {
   const NavData = [
     {
@@ -40,25 +39,23 @@ function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const styles = ({ isActive }) => `link ${isActive ? "active" : " "}`;
 
-  const { status, username, photoURL } = useSelector((state) => state.auth);
+  const token = JSON.parse(localStorage.getItem("logged"));
 
-  if (status !== "authenticated") {
+  if (!token) {
     NavData.push({
       name: "Login",
       icon: <FcIdea />,
       link: "/login",
     });
     NavData.push({
-      name: "Register",
+      name: "Sign Up",
       icon: <FcFlashOn />,
       link: "/register",
     });
   }
 
   const onLogout = () => {
-    navigate("/login", {
-      replace: true,
-    });
+    localStorage.removeItem("logged");
     dispatch(startLogout());
   };
   return (
@@ -80,18 +77,18 @@ function Sidebar() {
           />
         )}
         <div className="profile ">
-          {photoURL ? (
-            <img src={photoURL || defaultuser} alt="" />
+          {token ? (
+            <img src={token.photoURL || defaultuser} alt="" />
           ) : (
             <FcSportsMode />
           )}
 
-          <p>{username}</p>
+          <p>{token?.username}</p>
         </div>
 
         <hr />
 
-        <div className="links">
+        <div>
           {NavData.map((data, index) => {
             return (
               <NavLink
@@ -109,10 +106,18 @@ function Sidebar() {
           })}
         </div>
 
-        {status === "authenticated" && (
-          <button className="logout" onClick={onLogout}>
-            <FcExport /> <span>Logout</span>
-          </button>
+        {token && (
+          <NavLink
+            to={"/login"}
+            className={styles}
+            key={60}
+            onClick={() => onLogout()}
+          >
+            <span className="icon">{<FcExport />}</span>{" "}
+            <span className="name  animate__animated  animate__fadeInLeftBig">
+              Logout
+            </span>
+          </NavLink>
         )}
       </div>
     </div>

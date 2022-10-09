@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useForm } from "../../hooks/useForm";
@@ -53,6 +53,14 @@ function Login() {
 
   const [formSended, setformSended] = useState(false);
 
+  useEffect(() => {
+    if (localStorage.getItem("logged")) {
+      navigate("/home", {
+        replace: true,
+      });
+    }
+  }, []);
+
   const onSubmitForm = (e) => {
     e.preventDefault();
 
@@ -80,17 +88,16 @@ function Login() {
     console.log("onGoogleSignIn");
 
     dispatch(startGoogleSignIn());
-    navigate("/home", {
+
+    navigate("/routines", {
       replace: true,
     });
   };
-
   if (status === "authenticated") {
     navigate("/home", {
       replace: true,
     });
   }
-
   return (
     <>
       {status === "checking" && isFormValid && formSended ? (

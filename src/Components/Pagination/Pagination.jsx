@@ -9,10 +9,10 @@ function Pagination({ exercises }) {
 
   const TOTAL_PER_PAGE = 5;
 
-  var totalPages = Math.ceil(exercises.length / TOTAL_PER_PAGE);
+  var totalPages = Math.ceil(exercises?.length / TOTAL_PER_PAGE);
   if (exercises.length === 0) totalPages = 1;
 
-  let currentExercises = exercises.slice(
+  let currentExercises = exercises?.slice(
     (counter - 1) * TOTAL_PER_PAGE,
     (counter - 1) * TOTAL_PER_PAGE + TOTAL_PER_PAGE
   );
@@ -43,7 +43,7 @@ function Pagination({ exercises }) {
 
       <div className=" grid-container">
         {currentExercises
-          ? currentExercises.map((exercise) => {
+          ? currentExercises?.map((exercise) => {
               return <ExerciseCard key={exercise.id} exercise={exercise} />;
             })
           : "Loading"}

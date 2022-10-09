@@ -4,9 +4,10 @@ import "./footer.scss";
 
 function Footer() {
   const { status } = useSelector((state) => state.auth);
+  const token = JSON.parse(localStorage.getItem("logged"));
   return (
     <>
-      {status === "authenticated" && (
+      {token && (
         <footer className="footer">
           <div className="footer__addr">
             <h1 className="footer__logo">Go Gym</h1>

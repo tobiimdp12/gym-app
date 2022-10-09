@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+console.log(localStorage.getItem("logged"));
 const initialState = {
   status: "checking", // 'checking', 'authenticated', 'not-authenticated'
-  uid: null,
-  email: null,
-  username: null,
-  photoURL: null,
+  uid: JSON.parse(localStorage.getItem("logged"))?.uid,
+  email: JSON.parse(localStorage.getItem("logged"))?.email,
+  username: JSON.parse(localStorage.getItem("logged"))?.username,
+  photoURL: JSON.parse(localStorage.getItem("logged"))?.photoURL,
   errorMessage: null,
 };
 

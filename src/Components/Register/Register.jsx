@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -67,6 +67,15 @@ function Register() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("logged")) {
+      navigate("/home", {
+        replace: true,
+      });
+    }
+  }, []);
+
   const onSubmitForm = (e) => {
     e.preventDefault();
 

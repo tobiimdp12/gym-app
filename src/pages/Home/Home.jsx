@@ -9,8 +9,16 @@ function Home() {
   const [exercises, setExercises] = useState([]);
   const [bodyPart, setBodyPart] = useState("all");
 
-  /*
-    <SearchExercises
+  if (localStorage.getItem("favorites") === null) {
+    localStorage.setItem("favorites", JSON.stringify([]));
+    console.info("creando favoritos");
+  }
+
+  return (
+    <>
+      <div className="pages">
+        <Herobanner />
+        <SearchExercises
           setExercises={setExercises}
           bodyPart={bodyPart}
           setBodyPart={setBodyPart}
@@ -20,10 +28,7 @@ function Home() {
           exercises={exercises}
           bodyPart={bodyPart}
         />
-  */
-  return (
-    <>
-      <div className="pages"></div>
+      </div>
     </>
   );
 }

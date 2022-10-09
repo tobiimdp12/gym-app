@@ -27,7 +27,7 @@ function MoreDetails({ exerciseDetail }) {
         placeholder={loading}
         uri={gifUrl}
         render={(src, style) => (
-          <img src={src} alt={exercise.name} role="img" />
+          <img src={src} alt={name} role="img" />
         )}
       />
 

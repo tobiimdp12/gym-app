@@ -18,8 +18,8 @@ export const startGoogleSignIn = () => {
 
     const result = await signInWithGoogle();
 
-    console.error(result);
     if (!result.ok) return dispatch(logout(result));
+    localStorage.setItem("logged", JSON.stringify(result));
 
     dispatch(login(result));
   };
@@ -33,6 +33,7 @@ export const startCreatingUserWithEmail = ({ email, password, username }) => {
 
     if (!result.ok) return dispatch(logout(result));
 
+    localStorage.setItem("logged", JSON.stringify(result));
     dispatch(login(result));
   };
 };
@@ -42,8 +43,10 @@ export const startLoginWithEmailPassword = ({ email, password }) => {
     dispatch(checkingCredentials());
 
     const result = await loginWithEmailPassword({ email, password });
-    if (!result.ok) return dispatch(logout(result));
 
+    if (!result.ok) return dispatch(logout(result));
+    
+    localStorage.setItem("logged", JSON.stringify(result));
     dispatch(login(result));
   };
 };
