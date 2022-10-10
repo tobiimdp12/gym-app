@@ -1,9 +1,17 @@
 import React from "react";
 import loading from "../assets/loading.gif";
 function Loader() {
+  const logged = localStorage.getItem("logged");
+
+  if (logged !== null) {
+    navigate("/home", {
+      replace: true,
+    });
+  }
+
   return (
-    <div className="loader">
-      <img src="https://loading.io/asset/604924" />
+    <div className="loading-container">
+      <img src={loading} />
     </div>
   );
 }

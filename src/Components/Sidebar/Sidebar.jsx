@@ -39,11 +39,12 @@ function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const styles = ({ isActive }) => `link ${isActive ? "active" : " "}`;
 
+  let { photoURL, username } = useSelector((state) => state.auth);
   const token = JSON.parse(localStorage.getItem("logged"));
 
   if (!token) {
     NavData.push({
-      name: "Login",
+      name: "Log In",
       icon: <FcIdea />,
       link: "/login",
     });
@@ -77,13 +78,13 @@ function Sidebar() {
           />
         )}
         <div className="profile ">
-          {token ? (
-            <img src={token.photoURL || defaultuser} alt="" />
+          {photoURL ? (
+            <img src={photoURL || defaultuser} alt="" />
           ) : (
             <FcSportsMode />
           )}
 
-          <p>{token?.username}</p>
+          <p>{username}</p>
         </div>
 
         <hr />

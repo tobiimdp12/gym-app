@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { AiTwotoneHeart } from "react-icons/ai";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 
 function ButtonCard({ exercise, handleLiked }) {
   const [isLiked, setIsLiked] = useState(handleLiked);
-  const token = localStorage.getItem("logged");
+
+  const { uid } = useSelector((state) => state.auth);
   const SaveEx = () => {
-    if (!token)
+    if (!uid)
       return Swal.fire({
         icon: "error",
         title: "Please sign in to continue",
@@ -20,9 +21,8 @@ function ButtonCard({ exercise, handleLiked }) {
 
       Swal.fire({
         icon: "success",
-        title: "Gif added successfully",
+        title: "Exercise added successfully",
       });
-      alert("entre");
 
       setIsLiked(true);
     } else {
@@ -44,7 +44,7 @@ function ButtonCard({ exercise, handleLiked }) {
         localStorage.setItem("favorites", JSON.stringify(favoritesEx));
         Swal.fire({
           icon: "success",
-          title: "Gif added successfully",
+          title: "Exercise added successfully",
         });
         alert("entre");
 
@@ -55,7 +55,7 @@ function ButtonCard({ exercise, handleLiked }) {
 
         Swal.fire({
           icon: "info",
-          title: "Gif deleted successfully",
+          title: "Exercise deleted successfully",
         });
       }
     }

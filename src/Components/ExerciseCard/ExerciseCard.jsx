@@ -4,10 +4,11 @@ import LazyImage from "react-lazy-blur-image";
 import loading from "../../assets/loading.gif";
 import LikedExercise from "../../helpers/LikedExercise";
 import ButtonCard from "../ButtonLikedCard/ButtonCard";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 function ExerciseCard({ exercise }) {
   let isLiked = LikedExercise(exercise);
 
-  console.log(isLiked);
   return (
     <>
       <div className="exercise-card">

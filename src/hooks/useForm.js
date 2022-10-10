@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export const useForm = (initialForm = {}, formValidations = {}) => {
   const [formState, setFormState] = useState(initialForm);
@@ -22,35 +22,25 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
   };
 
   const isFormValid = useMemo(() => {
-    // [email, password, displayName]
-
     for (const formValue of Object.keys(formValidation)) {
-      if (formValidation[formValue] !== null) return false;
+      if (formValidation[formValue] !== null) {
+        return false;
+      }
     }
-
     return true;
   }, [formValidation]);
 
   const createValidators = () => {
     const formCheckedValues = {};
-    // [email, password, displayName]
+
     for (const formField of Object.keys(formValidations)) {
       for (const tupla in formValidations[formField]) {
-        // email: [
-        //     [(value) => value.includes("@"), "El correo debe tener un @"],
-        //     [(value) => value.includes("@"), "El correo debe tener un @"]
-        // ]
-
         const [fn, errorMessage] = formValidations[formField][tupla];
 
         formCheckedValues[`${formField}Valid`] = fn(formState[formField])
           ? null
           : errorMessage;
-        // {
-        //     emailValid: null,
-        //     passwordValid: "El password debe tener al menos 6 caracteres",
-        //     displayNameValid: null,
-        // }
+
         if (!fn(formState[formField])) break;
       }
     }
@@ -59,14 +49,15 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
 
   useEffect(() => {
     createValidators();
+    // eslint-disable-next-line
   }, [formState]);
 
   return {
     ...formState,
     ...formValidation,
+    isFormValid,
     formState,
     onInputChange,
     onResetForm,
-    isFormValid,
   };
 };

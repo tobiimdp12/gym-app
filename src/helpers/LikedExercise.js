@@ -6,8 +6,7 @@ export default function LikedExercise(exercise) {
 
   let isLiked = false;
 
-  console.log(logged);
-  if (favoritesExercise === null || logged === null) return false;
+  if (favoritesExercise === null || !logged) return false;
 
   for (let e of favoritesExercise) {
     if (e.id === exercise.id) {

@@ -61,6 +61,12 @@ function Login() {
     }
   }, []);
 
+  const onGoogleSignIn = (e) => {
+    e.preventDefault();
+    console.log("onGoogleSignIn");
+    dispatch(startGoogleSignIn());
+  };
+
   const onSubmitForm = (e) => {
     e.preventDefault();
 
@@ -84,15 +90,6 @@ function Login() {
     setformSended(true);
   };
 
-  const onGoogleSignIn = () => {
-    console.log("onGoogleSignIn");
-
-    dispatch(startGoogleSignIn());
-
-    navigate("/routines", {
-      replace: true,
-    });
-  };
   if (status === "authenticated") {
     navigate("/home", {
       replace: true,
@@ -109,7 +106,7 @@ function Login() {
           <div className="center animate__animated animate__zoomIn">
             <h1>Login</h1>
 
-            <form method="post">
+            <form>
               <div className="txt_field">
                 <input
                   type="email"
@@ -131,7 +128,12 @@ function Login() {
                 <label>Password</label>
               </div>
               <input type="submit" value="Login" onClick={onSubmitForm} />
-              <button className="signup_gmail" onClick={onGoogleSignIn}>
+
+              <button
+                type="submit"
+                className="signup_gmail"
+                onClick={onGoogleSignIn}
+              >
                 {" "}
                 <FcGoogle /> <span>SignIn with Google</span>
               </button>
